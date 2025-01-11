@@ -112,7 +112,7 @@ jobs:
         with:
           name: ${{ env.BUNDLE }}.tar.xz binaries sha256 ${{ env.SHA256SUM }}
           # path: src/sha256sum.txt
-          path: ${{ env.BUNDLE }}.tar.xz
+          path: src/${{ env.BUNDLE }}.tar.xz
       - name: Upload assets
         if: ${{ github.event_name == 'release' }}
         run: gh release upload "${GITHUB_REF##*/}" ${{ env.BUNDLE }}.tar.xz --clobber

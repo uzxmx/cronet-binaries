@@ -104,7 +104,7 @@ jobs:
       - run: ccache -s
       - name: Pack assets
         run: |
-          mv out/Release/cronet ${{ env.BUNDLE }}
+          mv out/Debug/cronet ${{ env.BUNDLE }}
           tar cJf ${{ env.BUNDLE }}.tar.xz ${{ env.BUNDLE }}
           openssl sha256 ${{ env.BUNDLE }}.tar.xz >sha256sum.txt
           echo "SHA256SUM=$(cut -d' ' -f2 sha256sum.txt)" >>$GITHUB_ENV

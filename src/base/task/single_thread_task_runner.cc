@@ -51,6 +51,11 @@ SingleThreadTaskRunner::GetCurrentDefault() {
                 "consider using it if the current task can run from a "
                 "SequencedTaskRunner."
               : "");
+  if (handle->task_runner_) {
+    printf("task_runner_ not null\n");
+  } else {
+    printf("task_runner_ null\n");
+  }
   return handle->task_runner_;
 }
 

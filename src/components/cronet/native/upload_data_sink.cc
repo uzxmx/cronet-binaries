@@ -189,6 +189,11 @@ void Cronet_UploadDataSinkImpl::InitializeUploadDataStream(
   DCHECK(!upload_data_stream_);
   DCHECK(!network_task_runner_.get());
   upload_data_stream_ = upload_data_stream;
+  if (network_task_runner) {
+    printf("network_task_runner not null\n");
+  } else {
+    printf("network_task_runner null\n");
+  }
   network_task_runner_ = network_task_runner;
 }
 

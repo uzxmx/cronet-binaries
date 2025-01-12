@@ -9,7 +9,7 @@ if [ "$1" = debug ]; then
   out=out/Debug
   flags="
     is_debug=true
-    is_component_build=true"
+    is_component_build=false"
 else
   out=out/Release
   flags="

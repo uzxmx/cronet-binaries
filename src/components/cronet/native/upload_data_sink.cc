@@ -196,6 +196,7 @@ void Cronet_UploadDataSinkImpl::OnRewindError(Cronet_String error_message) {
 void Cronet_UploadDataSinkImpl::InitializeUploadDataStream(
     base::WeakPtr<CronetUploadDataStream> upload_data_stream,
     scoped_refptr<base::SingleThreadTaskRunner> network_task_runner) {
+  printf("Initialized\n");
   DCHECK(!upload_data_stream_);
   DCHECK(!network_task_runner_.get());
   upload_data_stream_ = upload_data_stream;
@@ -276,6 +277,7 @@ void Cronet_UploadDataSinkImpl::CheckState(UserCallback expected_state) {
 void Cronet_UploadDataSinkImpl::NetworkTasks::InitializeOnNetworkThread(
     base::WeakPtr<CronetUploadDataStream> upload_data_stream) {
   DCHECK_CALLED_ON_VALID_THREAD(network_thread_checker_);
+  printf("PostTaskToExecutor\n");
   PostTaskToExecutor(
       base::BindOnce(&Cronet_UploadDataSinkImpl::InitializeUploadDataStream,
                      base::Unretained(upload_data_sink_), upload_data_stream,

@@ -130,6 +130,16 @@ void Cronet_UploadDataSinkImpl::OnReadSucceeded(uint64_t bytes_read,
     }
     remaining_length_ -= bytes_read;
   }
+  if (network_task_runner_) {
+    printf("null\n");
+  } else {
+    printf("not null\n");
+  }
+  if (network_task_runner_.get() == nullptr) {
+    printf("nullptr\n");
+  } else {
+    printf("not nullptr\n");
+  }
   network_task_runner_->PostTask(
       FROM_HERE, base::BindOnce(&CronetUploadDataStream::OnReadSuccess,
                                 upload_data_stream_, bytes_read, final_chunk));
